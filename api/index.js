@@ -77,6 +77,39 @@ router
         task,
       },
     });
+  })
+  .delete('/tasks/:id', (req, res, next) => {
+    const idx = tasks.findIndex(item => item.id === req.params.id);
+    if (idx === -1) {
+      throw new Error();
+      return;
+    }
+    const task = tasks.splice(idx, 1);
+    return res.json({
+      status: 'success',
+      code: 200,
+      result: {
+        task,
+      },
+    });
   });
+
+router.patch('/tasks/:id/status', (req, res, next) => {
+  const { done } = req.body;
+  const id = req.params.id;
+  const task = tasks.find(item => item.id === id);
+  if (!task) {
+    throw new Error();
+    return;
+  }
+  task.done = done;
+  return res.json({
+    status: 'success',
+    code: 200,
+    result: {
+      task,
+    },
+  });
+});
 
 module.exports = router;
