@@ -1,23 +1,19 @@
 {
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "server.js",
+  "name": "node-practice",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "cross-env NODE_ENV=production node ./server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
+    "cors": "2.8.5",
+    "cross-env": "7.0.3",
     "dotenv": "^16.0.3",
-    "express": "^4.17.1",
-    "nanoid": "^3.1.12"
-  },
-  "engines": {
-    "node": "12.x"
-  },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "express": "4.17.1",
+    "morgan": "1.10.0"
   },
   "license": "MIT",
   "keywords": [
@@ -26,6 +22,12 @@
     "express"
   ],
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "eslint": "7.19.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "5.2.0",
+    "nodemon": "2.0.15"
   }
 }
